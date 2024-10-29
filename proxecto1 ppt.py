@@ -57,6 +57,11 @@ while not contadorP == 3:
         print("Este punto es para ti")
         contadorP += 1
 
+    print(f'''
+    Tú tienes {contadorP} puntos
+    Yo tengo {contadorM} puntos
+    ''')
+
     time.sleep(1)
 
     if contadorM == 3:
