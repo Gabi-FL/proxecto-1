@@ -25,7 +25,7 @@ while contadorP < 3 or contadorM < 3:
     frases_ganar = ["Este punto es para ti", "Te sumamos un puntito", "Punto para ti, pero no te acostumbres"]
     frases_perder = ["Ja, he ganado yo", "Punto para mua", "Soy invencible, punto para mi"]
 
-    if opc_ordenador == (opc_jugador + 1) % 3:
+    if opc_ordenador == (opc_jugador + 1) % 3:         #Compara la elección del jugador con la de la máquina, determina quien gana y suma un punto al marcador
         parteVisual.escribe_despacico(random.choice(frases_perder))
         contadorM += 1
     elif opc_ordenador == opc_jugador:
@@ -46,7 +46,7 @@ while contadorP < 3 or contadorM < 3:
     elif contadorP == 3:
         parteVisual.escribe_despacico("Esta vez has ganado, ¡pero de suerte!")
 
-    if contadorM ==3 or contadorP == 3:
+    if contadorM ==3 or contadorP == 3:         #ofrece la opción de jugar otra partida o de acabar de jugar
         parteVisual.escribe_despacico("Volver a jugar? si/no")
         volver_a_jugar = input()
         if volver_a_jugar.lower() == "si":
