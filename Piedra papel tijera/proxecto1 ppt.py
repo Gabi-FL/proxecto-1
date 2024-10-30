@@ -13,9 +13,9 @@ while contadorP < 3 or contadorM < 3:
     
     time.sleep(0.3)
     parteVisual.escribe_despacico('''Escoge una opción:
-    1. Piedra
-    2. Papel
-    3. Tijeras
+        1. Piedra
+        2. Papel
+        3. Tijeras
         ''')
     time.sleep(0.3)
     opc_jugador = parteLogica.eleccion_jugador()
@@ -47,9 +47,9 @@ while contadorP < 3 or contadorM < 3:
         parteVisual.escribe_despacico("Esta vez has ganado, ¡pero de suerte!")
 
     if contadorM ==3 or contadorP == 3:
-        parteVisual.escribe_despacico("Volver a jugar? s/n")
+        parteVisual.escribe_despacico("Volver a jugar? si/no")
         volver_a_jugar = input()
-        if volver_a_jugar == "s":
+        if volver_a_jugar.lower() == "si":
             contadorM = 0
             contadorP = 0
             os.system("cls" if os.name == "nt" else "clear")
