@@ -53,4 +53,5 @@ while contadorP < 3 or contadorM < 3:
             contadorM = 0
             contadorP = 0
             os.system("cls" if os.name == "nt" else "clear")
-
+        else:
+            break
