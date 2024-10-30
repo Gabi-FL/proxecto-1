@@ -9,6 +9,8 @@ contadorM = 0
 
 os.system("cls" if os.name == "nt" else "clear")
 
+parteVisual.escribe_despacico("Bienvenido al piedra papel tijera, esto es muy fácil, tú eliges qué sacar, y yo (la máquina) elijo qué sacar y a ver quien gana")
+
 while contadorP < 3 or contadorM < 3:
     
     time.sleep(0.3)
