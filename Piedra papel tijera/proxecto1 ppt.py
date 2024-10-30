@@ -20,9 +20,13 @@ while contadorP < 3 or contadorM < 3:
         3. Tijeras
         ''')
     time.sleep(0.3)
-    opc_jugador = parteLogica.eleccion_jugador()
+
+    opc_jugador = 3
+    while opc_jugador != 0 or opc_jugador != 1 or opc_jugador != 2:      #llama a la función elección máquina si la primera vez el valor es incorrecto
+        opc_jugador = parteLogica.eleccion_jugador()
     time.sleep(0.3)
     opc_ordenador = parteLogica.eleccion_maquina()
+
     time.sleep(0.3)
     frases_ganar = ["Este punto es para ti", "Te sumamos un puntito", "Punto para ti, pero no te acostumbres"]
     frases_perder = ["Ja, he ganado yo", "Punto para mua", "Soy invencible, punto para mi"]
