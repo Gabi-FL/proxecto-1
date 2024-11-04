@@ -24,17 +24,8 @@ while contadorP < 3 or contadorM < 3:
     time.sleep(0.3)
     opc_ordenador = parteLogica.eleccion_maquina()
     time.sleep(0.3)
-    frases_ganar = ["Este punto es para ti", "Te sumamos un puntito", "Punto para ti, pero no te acostumbres"]
-    frases_perder = ["Ja, he ganado yo", "Punto para mua", "Soy invencible, punto para mi"]
+    comparar_jugadas(opc_ordenador, opc_jugador)
 
-    if opc_ordenador == (opc_jugador + 1) % 3:         #Compara la elección del jugador con la de la máquina, determina quien gana y suma un punto al marcador
-        parteVisual.escribe_despacico(random.choice(frases_perder))
-        contadorM += 1
-    elif opc_ordenador == opc_jugador:
-        parteVisual.escribe_despacico("Hemos empatado, esta no cuenta")
-    else:
-        parteVisual.escribe_despacico(random.choice(frases_ganar))
-        contadorP += 1
 
     parteVisual.escribe_despacico(f'''
     Tú tienes {contadorP} puntos
