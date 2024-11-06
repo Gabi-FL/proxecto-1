@@ -63,15 +63,15 @@ def eleccion_maquina() -> int:
     return res_maq
 
 
-def comparar_jugadas(opc_ordenador, opc_jugador: int) -> int:
+def comparar_jugadas(opc_ordenador, opc_jugador: int):
     '''
     Compara la elección del jugador con la de la máquina, determina quien gana y suma un punto al marcador
         '''
     frases_ganar = ["Este punto es para ti", "Te sumamos un puntito", "Punto para ti, pero no te acostumbres"]
     frases_perder = ["Ja, he ganado yo", "Punto para mua", "Soy invencible, punto para mi"]
 
-    contadorP = 0
-    contadorM = 0
+    puntoJugador = 0
+    puntoMaquina = 0
 
     opc_jugador = 3
          #llama a la función elección máquina si la primera vez el valor es incorrecto
@@ -81,16 +81,11 @@ def comparar_jugadas(opc_ordenador, opc_jugador: int) -> int:
 
     if opc_ordenador == (opc_jugador + 1) % 3:         
         parteVisual.escribe_despacico(random.choice(frases_perder))
-        contadorM += 1
+        puntoMaquina += 1
     elif opc_ordenador == opc_jugador:
         parteVisual.escribe_despacico("Hemos empatado, esta no cuenta")
     else:
         parteVisual.escribe_despacico(random.choice(frases_ganar))
-        contadorP += 1
+        puntoJugador += 1
         
-        parteVisual.escribe_despacico(f'''
-    Tú tienes {contadorP} puntos
-    Yo tengo {contadorM} puntos
-    ''')
-        
-    return contadorM and contadorP
+    return puntoMaquina, puntoJugador
