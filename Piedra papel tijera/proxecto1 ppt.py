@@ -19,18 +19,19 @@ while contadorP < 3 or contadorM < 3:
         2. Papel
         3. Tijeras
         ''')
-    time.sleep(0.3)
-    opc_jugador = parteLogica.eleccion_jugador()
-    time.sleep(0.3)
-    opc_ordenador = parteLogica.eleccion_maquina()
-    time.sleep(0.3)
-    comparar_jugadas(opc_ordenador, opc_jugador)
+    
 
+   # opc_jugador = 3
+    #while opc_jugador != 0 or opc_jugador != 1 or opc_jugador != 2:      #llama a la función elección máquina si la primera vez el valor es incorrecto
+     #   opc_jugador = parteLogica.eleccion_jugador()
+    #time.sleep(0.3)
+    #opc_ordenador = parteLogica.eleccion_maquina()
 
-    parteVisual.escribe_despacico(f'''
-    Tú tienes {contadorP} puntos
-    Yo tengo {contadorM} puntos
-    ''')
+    opc_ordenador = 0
+    opc_jugador = 0
+
+    parteLogica.comparar_jugadas(opc_ordenador, opc_jugador)
+
 
     time.sleep(0.5)
 
