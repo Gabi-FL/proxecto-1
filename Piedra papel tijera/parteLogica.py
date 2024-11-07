@@ -50,7 +50,8 @@ def eleccion_maquina() -> int:
 
 
 def comparar_jugadas(opc_ordenador: int, opc_jugador: int) -> Tuple[int, int]:
-    """Esta función compara la elección del jugador con la de la máquina, determina quien gana y suma un punto al marcador
+    """Esta función compara la elección del jugador con la de la máquina, determina quien gana y suma un punto al marcador. Además imprime por pantalla una
+    frase indicando quién ha ganado la jugada.
 
     Args:
         opc_ordenador (int): La elección de la máquina (es un número entre el 0 y el 2)
@@ -60,8 +61,9 @@ def comparar_jugadas(opc_ordenador: int, opc_jugador: int) -> Tuple[int, int]:
         Tuple[int, int]: una tupla con los valores de las variables puntoJugador y puntoMaquina. Uno de los dos valores va
         a valer 1 excepto en caso de empate, que nadie obtendrá un punto
     """
-    frases_ganar = ["Este punto es para ti", "Te sumamos un puntito", "Punto para ti, pero no te acostumbres"]
-    frases_perder = ["Ja, he ganado yo", "Punto para mua", "Soy invencible, punto para mi"]
+    frases_ganar = ["Este punto es para ti", "Te sumamos un puntito", "Punto para ti, pero no te acostumbres", "Vaya suerte, ¿estás haciendo trampas?"]
+    frases_perder = ["Ja, he ganado yo", "Punto para mua", "Soy invencible, punto para mi", "No tienes ninguna opción contra mi"]
+    frases_empatar = ["Hemos empatado, esta no cuenta", "Empate", "Deja de leerme la mente, dale de nuevo", "No se vale copiar, vamos de nuevo"]
 
     puntoJugador = 0
     puntoMaquina = 0
@@ -76,7 +78,7 @@ def comparar_jugadas(opc_ordenador: int, opc_jugador: int) -> Tuple[int, int]:
         parteVisual.escribe_despacico(random.choice(frases_perder))
         puntoMaquina = 1
     elif opc_ordenador == opc_jugador:
-        parteVisual.escribe_despacico("Hemos empatado, esta no cuenta")
+        parteVisual.escribe_despacico(random.choice(frases_empatar))
     else:
         parteVisual.escribe_despacico(random.choice(frases_ganar))
         puntoJugador = 1
@@ -117,6 +119,8 @@ def jugar_de_nuevo(contadorM:int, contadorP: int, continuar: bool) -> Tuple[int,
     else:
         continuar = False
         return contadorP, contadorM, continuar
+    
+
 
     
         
