@@ -24,7 +24,7 @@ while contadorP < 3 and contadorM < 3 and continuar:
     opc_ordenador = 0
     opc_jugador = 0
 
-    puntoM, puntoP = parteLogica.comparar_jugadas(opc_ordenador, opc_jugador)
+    puntoM, puntoP = parteLogica.comparar_jugadas(opc_ordenador, opc_jugador, contadorP)
 
     contadorM += puntoM
     contadorP += puntoP

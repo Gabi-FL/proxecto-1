@@ -49,13 +49,14 @@ def eleccion_maquina() -> int:
     return res_maq
 
 
-def comparar_jugadas(opc_ordenador: int, opc_jugador: int) -> Tuple[int, int]:
+def comparar_jugadas(opc_ordenador: int, opc_jugador: int, contadorP: int) -> Tuple[int, int]:
     """Esta función compara la elección del jugador con la de la máquina, determina quien gana y suma un punto al marcador. Además imprime por pantalla una
     frase indicando quién ha ganado la jugada.
 
     Args:
         opc_ordenador (int): La elección de la máquina (es un número entre el 0 y el 2)
         opc_jugador (int): La elección del jugador (es un número entre el 0 y el 2)
+        contadorP (int): La puntuación del jugador
 
     Returns:
         Tuple[int, int]: una tupla con los valores de las variables puntoJugador y puntoMaquina. Uno de los dos valores va
@@ -69,10 +70,13 @@ def comparar_jugadas(opc_ordenador: int, opc_jugador: int) -> Tuple[int, int]:
     puntoMaquina = 0
 
     opc_jugador = 3
-         #llama a la función elección máquina si la primera vez el valor es incorrecto
+        
     opc_jugador = eleccion_jugador()
 
-    opc_ordenador = eleccion_maquina()
+    if contadorP == 2:
+        opc_ordenador = trampas(opc_ordenador, opc_jugador)
+    else:
+        opc_ordenador = eleccion_maquina()
 
     if opc_ordenador == (opc_jugador + 1) % 3:         
         parteVisual.escribe_despacico(random.choice(frases_perder))
@@ -120,7 +124,17 @@ def jugar_de_nuevo(contadorM:int, contadorP: int, continuar: bool) -> Tuple[int,
         continuar = False
         return contadorP, contadorM, continuar
     
+def trampas(opc_ordenador: int, opc_jugador: int) -> int:
+    """Esta función hace que la opción de la máquina no sea aleatoria, sino que escoja siempre la opción que vaya a ganar
 
-
+    Args:
+        contadorP (int): el contador del jugador
+        opc_ordenador (int): la opción de la máquina
+        opc_jugador (int): la opción del jugador
+    Returns:
+        opc_ordenador (int): devuelve la opción de la máquina
+    """
+    opc_ordenador = (opc_jugador + 1) % 3
+    return opc_ordenador
     
         

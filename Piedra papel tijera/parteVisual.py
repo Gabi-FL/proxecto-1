@@ -8,6 +8,6 @@ def escribe_despacico(frase: str) -> None:
     """
     for letra in frase:    
         print(letra, end="", flush=True)
-        time.sleep(0.0)         #hay que poner 0.03 en el valor de time.sleep después de probar
+        time.sleep(0.03)         #hay que poner 0.03 en el valor de time.sleep después de probar
     print()
 
