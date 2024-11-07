@@ -6,12 +6,13 @@ import parteLogica
 
 contadorP = 0
 contadorM = 0
+continuar = True
 
 os.system("cls" if os.name == "nt" else "clear")
 
 parteVisual.escribe_despacico("Bienvenido al piedra papel tijera, esto es muy fácil, tú eliges qué sacar, y yo (la máquina) elijo qué sacar y a ver quien gana")
 
-while contadorP < 3 or contadorM < 3:
+while contadorP < 3 and contadorM < 3 and continuar:
     
     time.sleep(0.3)
     parteVisual.escribe_despacico('''Escoge una opción:
@@ -19,13 +20,6 @@ while contadorP < 3 or contadorM < 3:
         2. Papel
         3. Tijeras
         ''')
-    
-
-   # opc_jugador = 3
-    #while opc_jugador != 0 or opc_jugador != 1 or opc_jugador != 2:      #llama a la función elección máquina si la primera vez el valor es incorrecto
-     #   opc_jugador = parteLogica.eleccion_jugador()
-    #time.sleep(0.3)
-    #opc_ordenador = parteLogica.eleccion_maquina()
 
     opc_ordenador = 0
     opc_jugador = 0
@@ -42,17 +36,7 @@ while contadorP < 3 or contadorM < 3:
 
     time.sleep(0.5)
 
-    if contadorM == 3:
-        parteVisual.escribe_despacico("¡Has perdido! ya te dije que era el mejor en esto")
-    elif contadorP == 3:
-        parteVisual.escribe_despacico("Esta vez has ganado, ¡pero de suerte!")
+    parteLogica.quien_gana(contadorM, contadorP)
 
-    if contadorM ==3 or contadorP == 3:         #ofrece la opción de jugar otra partida o de acabar de jugar
-        parteVisual.escribe_despacico("Volver a jugar? si/no")
-        volver_a_jugar = input()
-        if volver_a_jugar.lower() == "si":
-            contadorM = 0
-            contadorP = 0
-            os.system("cls" if os.name == "nt" else "clear")
-        else:
-            break
+    if contadorM ==3 or contadorP == 3:
+        parteLogica.jugar_de_nuevo(contadorM, contadorP, continuar)

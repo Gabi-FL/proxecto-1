@@ -1,31 +1,15 @@
 import parteVisual
 import random
-
-
-#def eleccion_jugador() -> int|str:          #Recoge la elección del jugador y devuelve el valor a comparar con la elección de la máquina
-#    parteVisual.escribe_despacico("Elijo la: ")
-#    opcion =int(input())
-#    try:    
-#        if (opcion < 4 and opcion > 0):
-#            if opcion == 1:
-#                parteVisual.escribe_despacico("Has escogido piedra")
-#                return 0
-#            elif opcion == 2:
-#                parteVisual.escribe_despacico("Has escogido papel")
-#                return 1
-#            else:
-#                parteVisual.escribe_despacico("Has escogido tijera")
-#                return 2
-#        else:
-#            parteVisual.escribe_despacico("Esa no era una opción, escoge otra vez")
-#    except TypeError:
-#        parteVisual.escribe_despacico("Venga ya, eso no era ni un número, si no quieres jugar, me enfado y me voy")
-
+import os
+from typing import Tuple
 
 def eleccion_jugador() -> int:          
-    '''
-    Recoge la elección del jugador y devuelve el valor a comparar con la elección de la máquina
-    '''
+    """Esta función pide al jugador que escoja una de las tres opciones, piedra, papel o tijera, y lo transforma en un valor 
+    entero entre el 0 y el 2
+
+    Returns:
+        int: un valor entre 0 y 2 que representa la opción elegida por el jugador
+    """
     parteVisual.escribe_despacico("Elijo la: ")
 
     opcion = ""
@@ -49,9 +33,11 @@ def eleccion_jugador() -> int:
 
 
 def eleccion_maquina() -> int:      
-    '''
-    Genera una elección de la máquina entre 0 y 2
-    '''
+    """Esta función genera un número aleatorio entre el 0 y el 2, que será la opción elegida por la máquina
+
+    Returns:
+        int: el valor elegido aleatoriamente por la máquina
+    """
     res_maq = random.randint(0,2)
     match res_maq:
         case 0:
@@ -63,10 +49,17 @@ def eleccion_maquina() -> int:
     return res_maq
 
 
-def comparar_jugadas(opc_ordenador, opc_jugador: int):
-    '''
-    Compara la elección del jugador con la de la máquina, determina quien gana y suma un punto al marcador
-        '''
+def comparar_jugadas(opc_ordenador: int, opc_jugador: int) -> Tuple[int, int]:
+    """Esta función compara la elección del jugador con la de la máquina, determina quien gana y suma un punto al marcador
+
+    Args:
+        opc_ordenador (int): La elección de la máquina (es un número entre el 0 y el 2)
+        opc_jugador (int): La elección del jugador (es un número entre el 0 y el 2)
+
+    Returns:
+        Tuple[int, int]: una tupla con los valores de las variables puntoJugador y puntoMaquina. Uno de los dos valores va
+        a valer 1 excepto en caso de empate, que nadie obtendrá un punto
+    """
     frases_ganar = ["Este punto es para ti", "Te sumamos un puntito", "Punto para ti, pero no te acostumbres"]
     frases_perder = ["Ja, he ganado yo", "Punto para mua", "Soy invencible, punto para mi"]
 
@@ -89,3 +82,41 @@ def comparar_jugadas(opc_ordenador, opc_jugador: int):
         puntoJugador = 1
         
     return puntoMaquina, puntoJugador
+
+def quien_gana(contadorM: int, contadorP: int) -> None:
+    """Esta función imprime un mensaje indicando quien ha ganado la partida
+
+    Args:
+        contadorM (int): la puntuación de la máquina
+        contadorP (int): la puntuación del jugador
+    """
+    if contadorM == 3:
+        parteVisual.escribe_despacico("¡Has perdido! ya te dije que era el mejor en esto")
+    elif contadorP == 3:
+        parteVisual.escribe_despacico("Esta vez has ganado, ¡pero de suerte!")
+
+def jugar_de_nuevo(contadorM:int, contadorP: int, continuar: bool) -> Tuple[int, int, bool]:
+    """Esta función da la opción de volver a jugar otra partida
+
+    Args:
+        contadorM (int): la puntuación de la máquina
+        contadorP (int): la puntuación del jugador
+        continuar (bool): una bandera que indica si se sigue jugando o no
+
+    Returns:
+        Tuple[int, int, bool]: los valores anteriores; en caso de que se juegue otra partida los
+        contadores se devuelven a 0 y la bandera con valor True, si no la bandera va con valor False
+    """
+    parteVisual.escribe_despacico("Volver a jugar? si/no")
+    volver_a_jugar = input()
+    if volver_a_jugar.lower() == "si":
+        contadorM = 0
+        contadorP = 0
+        os.system("cls" if os.name == "nt" else "clear")
+        return contadorP, contadorM, continuar
+    else:
+        continuar = False
+        return contadorP, contadorM, continuar
+
+    
+        
