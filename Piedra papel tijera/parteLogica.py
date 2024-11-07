@@ -81,11 +81,11 @@ def comparar_jugadas(opc_ordenador, opc_jugador: int):
 
     if opc_ordenador == (opc_jugador + 1) % 3:         
         parteVisual.escribe_despacico(random.choice(frases_perder))
-        puntoMaquina += 1
+        puntoMaquina = 1
     elif opc_ordenador == opc_jugador:
         parteVisual.escribe_despacico("Hemos empatado, esta no cuenta")
     else:
         parteVisual.escribe_despacico(random.choice(frases_ganar))
-        puntoJugador += 1
+        puntoJugador = 1
         
     return puntoMaquina, puntoJugador

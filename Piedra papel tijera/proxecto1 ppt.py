@@ -30,13 +30,15 @@ while contadorP < 3 or contadorM < 3:
     opc_ordenador = 0
     opc_jugador = 0
 
-    contadorM, contadorP = parteLogica.comparar_jugadas(opc_ordenador, opc_jugador)
-    
+    puntoM, puntoP = parteLogica.comparar_jugadas(opc_ordenador, opc_jugador)
+
+    contadorM += puntoM
+    contadorP += puntoP
+
     parteVisual.escribe_despacico(f'''
     Tú tienes {contadorP} puntos
     Yo tengo {contadorM} puntos
     ''')
-
 
     time.sleep(0.5)
 
