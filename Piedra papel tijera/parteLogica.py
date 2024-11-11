@@ -61,6 +61,8 @@ def comparar_jugadas(opc_ordenador: int, opc_jugador: int, contadorP: int) -> Tu
     Returns:
         Tuple[int, int]: una tupla con los valores de las variables puntoJugador y puntoMaquina. Uno de los dos valores va
         a valer 1 excepto en caso de empate, que nadie obtendrá un punto
+
+    >>> 
     """
     frases_ganar = ["Este punto es para ti", "Te sumamos un puntito", "Punto para ti, pero no te acostumbres", "Vaya suerte, ¿estás haciendo trampas?"]
     frases_perder = ["Ja, he ganado yo", "Punto para mua", "Soy invencible, punto para mi", "No tienes ninguna opción contra mi"]
@@ -74,7 +76,7 @@ def comparar_jugadas(opc_ordenador: int, opc_jugador: int, contadorP: int) -> Tu
     opc_jugador = eleccion_jugador()
 
     if contadorP == 2:
-        opc_ordenador = trampas(opc_ordenador, opc_jugador)
+        opc_ordenador = trampas(opc_jugador)
     else:
         opc_ordenador = eleccion_maquina()
 
@@ -124,7 +126,7 @@ def jugar_de_nuevo(contadorM:int, contadorP: int, continuar: bool) -> Tuple[int,
         continuar = False
         return contadorP, contadorM, continuar
     
-def trampas(opc_ordenador: int, opc_jugador: int) -> int:
+def trampas(opc_jugador: int) -> int:
     """Esta función hace que la opción de la máquina no sea aleatoria, sino que escoja siempre la opción que vaya a ganar
 
     Args:
@@ -133,7 +135,15 @@ def trampas(opc_ordenador: int, opc_jugador: int) -> int:
         opc_jugador (int): la opción del jugador
     Returns:
         opc_ordenador (int): devuelve la opción de la máquina
+
+    >>> trampas(2)
+    0
+    >>> trampas(1)
+    2
+    >>> trampas(0)
+    1
     """
+    
     opc_ordenador = (opc_jugador + 1) % 3
     return opc_ordenador
     
