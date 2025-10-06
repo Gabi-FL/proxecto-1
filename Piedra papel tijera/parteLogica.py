@@ -8,7 +8,7 @@ def eleccion_jugador() -> int:
     entero entre el 0 y el 2
 
     Returns:
-        int: un valor entre 0 y 2 que representa la opción elegida por el jugador
+        int: un valor entre 0 y 2 que representa la opción elegida por el jugador sdsfsggd
     """
     parteVisual.escribe_despacico("Elijo la: ")
 
